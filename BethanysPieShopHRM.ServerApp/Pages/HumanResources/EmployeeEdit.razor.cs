@@ -3,6 +3,7 @@ using BethanysPieShopHRM.ServerApp.Services.Data;
 using BethanysPieShopHRM.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
 using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.ServerApp.Pages.HumanResources
@@ -15,7 +16,10 @@ namespace BethanysPieShopHRM.ServerApp.Pages.HumanResources
     [Inject]
     public NavigationManager NavigationManager { get; set; }
 
-    [Parameter]
+  [Inject]
+   public IJSRuntime JSRuntime { get; set; }
+
+   [Parameter]
     public string EmployeeId { get; set; }
 
     public InputText LastNameInputText { get; set; }
@@ -48,7 +52,16 @@ namespace BethanysPieShopHRM.ServerApp.Pages.HumanResources
 
     }
 
-    protected async Task HandleValidSubmit()
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                await JSRuntime.InvokeVoidAsync("blazorInterop.focusElementById", "firstName");
+
+            }
+        }
+
+        protected async Task HandleValidSubmit()
     {
       if (Employee.EmployeeId == 0) //new
       {
