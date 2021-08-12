@@ -19,6 +19,19 @@ blazorInterop.createEmployee = function (firstName, lastName){
     return { firstName, lastName, email: firstName + "@cassinisoft.com" };
 };
 
+blazorInterop.callStaticDotNetMethod = () => {
+    var promise = DotNet.invokeMethodAsync("BethanysPieShopHRM.ServerApp", "BuildEmail", "Sean");
+
+    promise.then(email => alert(email));
+};
+
+blazorInterop.callStaticDotNetMethodCustomIdentifier = () => {
+    var promise = DotNet.invokeMethodAsync("BethanysPieShopHRM.ServerApp", "BuildEmailWithLastName", "Sean", "Newman");
+
+    promise.then(email => alert(email));
+};
+
+
 blazorInterop.focusElement = (element) => element.focus();
 
 blazorInterop.focusElementById = (id) => {
@@ -26,8 +39,41 @@ blazorInterop.focusElementById = (id) => {
     if (element) {
         element.focus();
     }
+
+
+
 };
 
 blazorInterop.throwsError = () => {
     throw Error("Sean didn't implment correct function!");
+};
+
+
+blazorInterop.callDotNetInstanceMethod = (dotNetObjectRef) => {
+    //console.log(dotNetObjectRef);
+    dotNetObjectRef.invokeMethodAsync("SetWindowSize",
+        {
+            width: window.innerWidth
+            , height: window.innerHeight
+        })
+
+};
+
+
+
+blazorInterop.registerResizeHandler = (dotNetObjectRef) => {
+
+    function resizeHandler() {
+
+    dotNetObjectRef.invokeMethodAsync("SetWindowSize",
+        {
+            width: window.innerWidth
+            , height: window.innerHeight
+        });
+    };
+    // Set up initial values
+    resizeHandler();
+
+    // Register event handler
+    window.addEventListener("resize", resizeHandler);
 };
