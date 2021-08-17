@@ -1,4 +1,6 @@
-﻿@if (_isOnline)
+﻿@inject IJSRuntime JSRuntime
+
+@if (_isOnline)
 {
   <div class="isOnline">You're online</div>
 }
@@ -8,8 +10,23 @@ else
 }
 
 @code {
-  private bool _isOnline = true;
+    private bool _isOnline = true;
 
-  // TODO: Get status from navigator's onLine property
-  //       and subscribe to 'online' and 'offline' events to update
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var dotNetObjectReference = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("blazorInterop.registerOnlineHandler", dotNetObjectReference);
+        }
+    }
+
+
+    [JSInvokable]
+    public void SetOnlineStatus(bool isOnline)
+    {
+        _isOnline = isOnline;
+        StateHasChanged();
+    }
+
 }
