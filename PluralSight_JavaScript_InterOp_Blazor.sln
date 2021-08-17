@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BethanysPieShopHRM.Componen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BethanysPieShopHRM.ServerApp", "BethanysPieShopHRM.ServerApp\BethanysPieShopHRM.ServerApp.csproj", "{D2F6EA5B-EBDB-47D2-9856-03FEE4C20888}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BethanysPieShopHRM.OnlineCheckLibrary", "BethanysPieShopHRM.OnlineCheckLibrary\BethanysPieShopHRM.OnlineCheckLibrary.csproj", "{1A391F2A-D9B1-4CB7-BE22-900B0470D344}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RazorClassLibraries", "RazorClassLibraries", "{77D0883A-F39D-405C-A22E-CD26EBA45715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,17 @@ Global
 		{D2F6EA5B-EBDB-47D2-9856-03FEE4C20888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2F6EA5B-EBDB-47D2-9856-03FEE4C20888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2F6EA5B-EBDB-47D2-9856-03FEE4C20888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A391F2A-D9B1-4CB7-BE22-900B0470D344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A391F2A-D9B1-4CB7-BE22-900B0470D344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A391F2A-D9B1-4CB7-BE22-900B0470D344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A391F2A-D9B1-4CB7-BE22-900B0470D344}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58FDF25C-0B36-44EA-8820-53734E8E720A} = {77D0883A-F39D-405C-A22E-CD26EBA45715}
+		{1A391F2A-D9B1-4CB7-BE22-900B0470D344} = {77D0883A-F39D-405C-A22E-CD26EBA45715}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CF3AD7B-06F7-4A21-9BD7-D6D8A59C1CA9}

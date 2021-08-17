@@ -48,21 +48,7 @@ h2 {
   width: 240px;
 }
 
-.isOnline {
-  background-color: #23cfa7;
-  color: white;
-  position: absolute;
-  width: 240px;
-  padding: 2px 5px;
-}
 
-.isOffline {
-  background-color: lightcoral;
-  color: white;
-  position: absolute;
-  width: 240px;
-  padding: 2px 5px;
-}
 
 /*profile picture*/
 .profile {
