@@ -1,79 +1,66 @@
-﻿// The || operator appends the current defnition to any existing definition
-// Failure to user || results in the current definition replacing any existing
-
-var blazorInterop = blazorInterop || {};
+﻿var blazorInterop = blazorInterop || {};
 
 blazorInterop.showAlert = function (message) {
-    alert(message);
+  alert(message);
 };
 
 blazorInterop.logToConsoleTable = function (obj) {
-    console.table(obj);
-}
+  console.table(obj);
+};
 
 blazorInterop.showPrompt = function (message, defaultValue) {
-    return prompt(message, defaultValue);
-}
-
-blazorInterop.createEmployee = function (firstName, lastName){
-    return { firstName, lastName, email: firstName + "@cassinisoft.com" };
+  return prompt(message, defaultValue);
 };
 
-blazorInterop.callStaticDotNetMethod = () => {
-    var promise = DotNet.invokeMethodAsync("BethanysPieShopHRM.ServerApp", "BuildEmail", "Sean");
-
-    promise.then(email => alert(email));
+blazorInterop.createEmployee = function (firstName, lastName) {
+  return { firstName, lastName, email: firstName + "@thomasclaudiushuber.com" };
 };
 
-blazorInterop.callStaticDotNetMethodCustomIdentifier = () => {
-    var promise = DotNet.invokeMethodAsync("BethanysPieShopHRM.ServerApp", "BuildEmailWithLastName", "Sean", "Newman");
-
-    promise.then(email => alert(email));
+blazorInterop.focusElement = function (element) {
+  element.focus();
 };
 
-
-blazorInterop.focusElement = (element) => element.focus();
-
-blazorInterop.focusElementById = (id) => {
-    element = document.getElementById(id);
-    if (element) {
-        element.focus();
-    }
-
-
-
+blazorInterop.focusElementById = function (id) {
+  var element = document.getElementById(id);
+  if (element) element.focus();
 };
 
-blazorInterop.throwsError = () => {
-    throw Error("Sean didn't implment correct function!");
+blazorInterop.throwsError = function () {
+  throw Error("Thomas didn't implement this function");
 };
 
+blazorInterop.callStaticDotNetMethod = function () {
+  var promise = DotNet.invokeMethodAsync("BethanysPieShopHRM.ServerApp",
+    "BuildEmail", "Thomas");
+  promise.then(email => alert(email));
+};
 
-blazorInterop.callDotNetInstanceMethod = (dotNetObjectRef) => {
-    //console.log(dotNetObjectRef);
+blazorInterop.callStaticDotNetMethodCustomIdentifier = function () {
+  var promise = DotNet.invokeMethodAsync("BethanysPieShopHRM.ServerApp",
+    "BuildEmailWithLastName", "Thomas","Huber");
+  promise.then(email => alert(email));
+};
+
+blazorInterop.callDotNetInstanceMethod = function (dotNetObjectRef) {
+  dotNetObjectRef.invokeMethodAsync("SetWindowSize",
+    {
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+};
+
+blazorInterop.registerResizeHandler = function (dotNetObjectRef) {
+  function resizeHandler() {
     dotNetObjectRef.invokeMethodAsync("SetWindowSize",
-        {
-            width: window.innerWidth
-            , height: window.innerHeight
-        })
+      {
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+  };
 
-};
+  // Set up initial values
+  resizeHandler();
 
-blazorInterop.registerResizeHandler = (dotNetObjectRef) => {
-
-    function resizeHandler() {
-
-    dotNetObjectRef.invokeMethodAsync("SetWindowSize",
-        {
-            width: window.innerWidth
-            , height: window.innerHeight
-        });
-    };
-    // Set up initial values
-    resizeHandler();
-
-    // Register event handler
-    window.addEventListener("resize", resizeHandler);
-
-
+  // Register event handler
+  window.addEventListener("resize", resizeHandler);
 };

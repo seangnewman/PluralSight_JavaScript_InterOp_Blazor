@@ -16,10 +16,10 @@ namespace BethanysPieShopHRM.ServerApp.Pages.HumanResources
     [Inject]
     public NavigationManager NavigationManager { get; set; }
 
-  [Inject]
-   public IJSRuntime JSRuntime { get; set; }
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
 
-   [Parameter]
+    [Parameter]
     public string EmployeeId { get; set; }
 
     public InputText LastNameInputText { get; set; }
@@ -52,16 +52,15 @@ namespace BethanysPieShopHRM.ServerApp.Pages.HumanResources
 
     }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                await JSRuntime.InvokeVoidAsync("blazorInterop.focusElementById", "firstName");
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+      if (firstRender)
+      {
+        await JSRuntime.InvokeVoidAsync("blazorInterop.focusElementById", "firstName");
+      }
+    }
 
-            }
-        }
-
-        protected async Task HandleValidSubmit()
+    protected async Task HandleValidSubmit()
     {
       if (Employee.EmployeeId == 0) //new
       {

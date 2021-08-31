@@ -8,32 +8,29 @@
 }
 else
 {
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Employee ID</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach (var employee in Employees)
-      {
-        <tr>
-          <td>@employee.EmployeeId</td>
-          <td>@employee.FirstName</td>
-          <td>@employee.LastName</td>
-          <td>
-            <a href="@($"employeedetail/{employee.EmployeeId}")" class="btn btn-primary table-btn">
-              <i class="fas fa-info-circle"></i>
-            </a>
-            <a href="@($"employeeedit/{employee.EmployeeId}")" class="btn btn-primary table-btn">
-              <i class="fas fa-edit"></i>
-            </a>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
+<BlazorAgGrid TRow="Employee"
+              AutoGenerateColumns="true"
+              RowData="Employees"
+              OnSelectionChanged="GridSelectionChanged">
+    <BlazorAgGridColumn HeaderName="EmployeeId" Field="EmployeeId" Sortable="true" Filter="true" />
+    <BlazorAgGridColumn HeaderName="Firstname" Field="FirstName" Sortable="true" Filter="true" />
+    <BlazorAgGridColumn HeaderName="Lastname" Field="LastName" Sortable="true" Filter="true" />
+    <BlazorAgGridColumn HeaderName="Email" Field="Email" Sortable="true" Filter="true" />
+</BlazorAgGrid>
+    
+    
+  
+
+  @if (SelectedEmployee != null)
+  {
+    <div class="card">
+      <div class="card-header">
+        @SelectedEmployee.FirstName @SelectedEmployee.LastName
+      </div>
+      <div class="card-body">
+        <a class="btn btn-secondary" href="employeeedit/@SelectedEmployee.EmployeeId">edit</a>
+        <a class="btn btn-secondary" href="employeedetail/@SelectedEmployee.EmployeeId">view</a>
+      </div>
+    </div>
+  }
 }

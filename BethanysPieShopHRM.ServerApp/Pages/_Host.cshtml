@@ -27,33 +27,38 @@
 
   <link href="_content/BethanysPieShopHRM.ComponentsLibrary/leaflet/leaflet.css" rel="stylesheet" />
 
-    <link href="_content/BethanysPieShopHRM.OnlineCheckLibrary/styles.css" rel="stylesheet" />
+  <link href="_content/BethanysPieShopHRM.OnlineCheckLibrary/styles.css" rel="stylesheet">
+
+  <link href="_content/BethanysPieShopHRM.GridLibrary/styles.css" rel="stylesheet">
+
 </head>
 <body>
-    <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
+  <app>
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+  </app>
 
-    <div id="blazor-error-ui">
-        <environment include="Staging,Production">
-            An error has occurred. This application may no longer respond until reloaded.
-        </environment>
-        <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
-        </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
+  <div id="blazor-error-ui">
+    <environment include="Staging,Production">
+      An error has occurred. This application may no longer respond until reloaded.
+    </environment>
+    <environment include="Development">
+      An unhandled exception has occurred. See browser dev tools for details.
+    </environment>
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+  </div>
 
-    <script src="_framework/blazor.server.js"></script>
+  <script src="_framework/blazor.server.js"></script>
 
-    <script src="_content/BethanysPieShopHRM.ComponentsLibrary/leaflet/leaflet.js"></script>
-    <script src="_content/BethanysPieShopHRM.ComponentsLibrary/deliveryMap.js"></script>
-    <script src="_content/BethanysPieShopHRM.OnlineCheckLibrary/onlineCheck.js"></script>
-   
+  <script src="_content/BethanysPieShopHRM.ComponentsLibrary/leaflet/leaflet.js"></script>
+  <script src="_content/BethanysPieShopHRM.ComponentsLibrary/deliveryMap.js"></script>
 
-    <script src="scripts/blazorInterop.js"></script>
+  <script src="_content/BethanysPieShopHRM.OnlineCheckLibrary/onlineCheck.js"></script>
 
+  <script src="_content/BethanysPieShopHRM.GridLibrary/ag-grid/ag-grid-community.min.js"></script>
+  <script src="_content/BethanysPieShopHRM.GridLibrary/grid.js"></script>
+
+  <script src="scripts/blazorInterop.js"></script>
 
 </body>
 </html>
